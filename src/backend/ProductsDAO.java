@@ -150,10 +150,17 @@ public class ProductsDAO {
 
     public boolean DeleteAProduct (String PId) throws SQLException{
         String sql = "DELETE FROM products WHERE product_id = ?";
+        String sql2 = "DELETE FROM transactions WHERE product_id = ?";
 
         String url = "jdbc:mysql://localhost:3306/stock";
         String user = "root";
         String password = "#Fafyon123";
+
+        try(Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement ps2 = conn.prepareStatement(sql2)){
+                ps2.setString(1, PId);
+                ps2.executeUpdate();
+            }
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement ps = conn.prepareStatement(sql)) {
