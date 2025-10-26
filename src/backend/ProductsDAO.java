@@ -148,4 +148,20 @@ public class ProductsDAO {
         return netAmount;
     }
 
+    public boolean DeleteAProduct (String PId) throws SQLException{
+        String sql = "DELETE FROM products WHERE product_id = ?";
+
+        String url = "jdbc:mysql://localhost:3306/stock";
+        String user = "root";
+        String password = "#Fafyon123";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, PId);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        }
+    }
+
 }
