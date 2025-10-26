@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 public class MainChoice extends JFrame implements ActionListener {
 
-    private JButton B1, B2, B3, B4, B5, back;
+    private JButton B1, B2, B3, B4, B5, B6, back;
 
     public MainChoice(){
         this.setTitle("Main board");
@@ -46,13 +46,17 @@ public class MainChoice extends JFrame implements ActionListener {
         B5.setBounds(100, 270, 200, 30);
         B5.addActionListener(this);
 
+        B6 = new JButton("Delete a product");
+        B6.setBounds(100, 320, 200, 30);
+        B6.addActionListener(this);
+
         back= new JButton("<");
         back.addActionListener(this);
 
         back.setBounds(5,10,80,30);
 
         mb.add(back);
-        p.add(B1);p.add(B2);p.add(B3);p.add(B4);p.add(B5);
+        p.add(B1);p.add(B2);p.add(B3);p.add(B4);p.add(B5);p.add(B6);
         this.setVisible(true);
 
     }
@@ -77,6 +81,10 @@ public class MainChoice extends JFrame implements ActionListener {
         }
         if(e.getSource() == B5){
             SeeTable seeTable = new SeeTable();
+            this.dispose();
+        }
+        if(e.getSource() == B6){
+            DeleteProduct deleteProduct = new DeleteProduct();
             this.dispose();
         }
         if(e.getSource()==back){
