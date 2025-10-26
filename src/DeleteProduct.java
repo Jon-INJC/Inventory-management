@@ -57,6 +57,23 @@ public class DeleteProduct extends JFrame implements ActionListener {
 
         newItem.addActionListener(this);
         addItem.addActionListener(this);
+        menu.add(newItem);
+        menu.add(addItem);
+        menu.add(subItem);
+        menu.add(findItem);
+        menu.add(tableItem);
+        menu.addSeparator();
+        menu.add(backItem);
+
+        B = new JButton("Search");
+        B.addActionListener(this);
+        B.setBounds(140, 165, 80, 40);
+        
+        p.add(l);p.add(l1);p.add(t1);p.add(B);
+        p.setLayout(null);
+
+        this.add(p);
+        this.setVisible(true);
     }
     public void actionPerformed(ActionEvent e){
 
